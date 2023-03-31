@@ -1,3 +1,3 @@
 from os import system
-def debug(): system("flask --app cam360.app run --debug")
+def debug(): system("flask --app app.py run --debug")
 def migrate(): system("alembic upgrade head")

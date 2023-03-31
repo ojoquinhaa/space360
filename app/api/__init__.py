@@ -1,8 +1,6 @@
 from flask import Blueprint, jsonify, request
-from func.event import EventFunc
-
+from app.api.event import EventFunc
 eventBp = Blueprint("event",__name__,template_folder="../templates") # Criando o Blueprint
-
 @eventBp.route("/api/event",methods=["GET","POST"]) # Rota / GET
 def Events(): # Função que retorna a pagina do dash board
     if request.method == "GET": # Metodo GET

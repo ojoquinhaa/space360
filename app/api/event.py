@@ -1,5 +1,5 @@
-from connection.models import Event
-from connection.connect import conn
+from app.models.event import Event
+from app.connect import conn
 class EventFunc(Event):
     # Função para pegar todos os eventos
     def getAll(self): 

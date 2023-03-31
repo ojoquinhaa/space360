@@ -37,10 +37,203 @@
           >
             <h1>Space360°</h1>
           </div>
-          <div class="col-12 d-flex container flex-wrap h-100">
+          <div class="col-12 container mt-5 d-none" id="newDiv">
+            <form class="col-8 container" id="form">
+              <div class="col-12">
+                <label for="name">Nome do evento:</label>
+                <div class="input-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="name"
+                    placeholder="Insira o nome do seu novo evento"
+                    name="name"
+                  />
+                  <span class="invalid-feedback">O campo está inválido.</span>
+                </div>
+              </div>
+              <div class="col-12">
+                <label for="speedSet">Configurações de velocidade</label>
+                <select
+                  class="form-control"
+                  id="speedSet"
+                  form="form"
+                  name="speedSet"
+                >
+                  <option value="1">x0.5 - Slow Motion</option>
+                  <option value="2">x1 - Velocidade Normal</option>
+                  <option value="3">2x - Velocidade Acelerada</option>
+                  <option value="4" selected>
+                    (0.5 x 30% + 1 x 40% + 2 x 30%) - Velocidade alternada
+                  </option>
+                </select>
+              </div>
+              <div class="col-12">
+                <label for="recordingTime">Tempo de gravação:</label>
+                <select
+                  class="form-control"
+                  id="recordingTime"
+                  form="form"
+                  name="recordingTime"
+                ></select>
+                <script>
+                  for (let i = 5; i < 60; i++) {
+                    const option = document.createElement("option");
+                    option.innerText = i;
+                    option.value = i;
+                    document
+                      .getElementById("recordingTime")
+                      .appendChild(option);
+                  }
+                </script>
+              </div>
+              <div
+                class="col-12 d-flex justify-content-center align-items-center"
+              >
+                <label>Reverso? (Boomerang): </label>
+                <input
+                  type="checkbox"
+                  class="form-checkbox m-2"
+                  style="height: 30px; width: 30px"
+                  id="reverse"
+                  name="reverse"
+                />
+              </div>
+              <hr />
+              <div
+                class="col-12 d-flex justify-content-center align-items-center text-center"
+              >
+                <label for="frame">Imagem de sobreposição de video:</label>
+                <input
+                  type="checkbox"
+                  class="form-checkbox m-2"
+                  style="height: 30px; width: 30px"
+                  id="checkFrame"
+                />
+                <div class="input-group">
+                  <input
+                    class="form-control d-none"
+                    id="frame"
+                    name="frame"
+                    type="file"
+                    accept="image/png"
+                  />
+                </div>
+                <script>
+                  document
+                    .getElementById("checkFrame")
+                    .addEventListener("click", () => {
+                      document
+                        .getElementById("frame")
+                        .classList.toggle("d-none");
+                    });
+                </script>
+              </div>
+              <div
+                class="col-12 d-flex justify-content-center align-items-center text-center"
+              >
+                <label for="music" class="ml-5">Música de fundo:</label>
+                <input
+                  type="checkbox"
+                  class="form-checkbox m-2"
+                  style="height: 30px; width: 30px"
+                  id="checkMusic"
+                />
+                <div class="input-group">
+                  <input
+                    class="form-control d-none"
+                    id="music"
+                    name="music"
+                    type="file"
+                    accept="audio/*"
+                  />
+                </div>
+                <script>
+                  document
+                    .getElementById("checkMusic")
+                    .addEventListener("click", () => {
+                      document
+                        .getElementById("music")
+                        .classList.toggle("d-none");
+                    });
+                </script>
+              </div>
+              <div
+                class="col-12 d-flex justify-content-center align-items-center text-center"
+              >
+                <label for="iniImage" class="ml-5">Imagem no início:</label>
+                <input
+                  type="checkbox"
+                  class="form-checkbox m-2"
+                  style="height: 30px; width: 30px"
+                  id="checkIni"
+                />
+                <div class="input-group">
+                  <input
+                    class="form-control d-none"
+                    id="iniImage"
+                    name="iniImage"
+                    type="file"
+                    accept="image/*"
+                  />
+                </div>
+                <script>
+                  document
+                    .getElementById("checkIni")
+                    .addEventListener("click", () => {
+                      document
+                        .getElementById("iniImage")
+                        .classList.toggle("d-none");
+                    });
+                </script>
+              </div>
+              <div
+                class="col-12 d-flex justify-content-center align-items-center text-center"
+              >
+                <label for="music" class="ml-5">Imagem no término:</label>
+                <input
+                  type="checkbox"
+                  class="form-checkbox m-2"
+                  style="height: 30px; width: 30px"
+                  id="checkFin"
+                />
+                <div class="input-group">
+                  <input
+                    class="form-control d-none"
+                    id="finImage"
+                    name="finImage"
+                    type="file"
+                    accept="image/*"
+                  />
+                </div>
+                <script>
+                  document
+                    .getElementById("checkFin")
+                    .addEventListener("click", () => {
+                      document
+                        .getElementById("finImage")
+                        .classList.toggle("d-none");
+                    });
+                </script>
+              </div>
+              <hr />
+              <input
+                type="button"
+                class="btn btn-primary btn-block col-12"
+                id="send"
+                value="Criar"
+              />
+            </form>
+            <hr />
+            <div class="col-12 text-center text-dark mt-3">
+              <p id="back" style="cursor: pointer">Voltar</p>
+            </div>
+          </div>
+          <div class="col-12 container flex-wrap h-100" id="events">
             <div
               class="col-3 m-2 bg-primary d-flex justify-content-center align-items-center"
               style="cursor: pointer; height: 300px"
+              id="newEvent"
             >
               <h1 class="text-center text-white" style="font-size: 3em">+</h1>
             </div>
@@ -56,6 +249,57 @@
           console.log(event);
         });
       }
+      async function toggleNewEventDivHandler(e) {
+        const newDiv = document.getElementById("newDiv");
+        const events = document.getElementById("events");
+        if (newDiv.classList.contains("d-none")) {
+          newDiv.classList.remove("d-none");
+
+          events.classList.remove("d-flex");
+          events.classList.add("d-none");
+        } else {
+          newDiv.classList.add("d-none");
+
+          events.classList.add("d-flex");
+          events.classList.remove("d-none");
+        }
+      }
+
+      document
+        .getElementById("newEvent")
+        .addEventListener("click", toggleNewEventDivHandler);
+
+      document
+        .getElementById("back")
+        .addEventListener("click", toggleNewEventDivHandler);
+
+      document.getElementById("send").addEventListener("click", async () => {
+        const form = document.getElementById("form");
+        const formData = new FormData(form);
+
+        const name = formData.get("name");
+        if (name.length === 0 || name.length > 100)
+          document.getElementById("name").classList.add("is-invalid");
+
+        const frame = formData.get("frame");
+        if (frame.size === 0) formData.set("frame", "");
+
+        const music = formData.get("music");
+        if (music.size === 0) formData.set("music", "");
+
+        const iniImage = formData.get("iniImage");
+        if (iniImage.size === 0) formData.set("iniImage", "");
+
+        const finImage = formData.get("finImage");
+        if (finImage.size === 0) formData.set("finImage", "");
+
+        formData.set("reverse", document.getElementById("reverse").checked);
+
+        const event = await fetch("/api/events", {
+          method: "POST",
+          body: formData,
+        }).then((j) => j.json());
+      });
     </script>
   </body>
 </html>

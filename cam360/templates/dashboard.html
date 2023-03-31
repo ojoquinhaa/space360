@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DashBoard</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/litera/bootstrap.min.css"
+      integrity="sha384-enpDwFISL6M3ZGZ50Tjo8m65q06uLVnyvkFO3rsoW0UC15ATBFz3QEhr3hmxpYsn"
+      crossorigin="anonymous"
+    />
+    <style>
+      .slide_animation {
+        animation: slide 1s forwards;
+      }
+
+      @keyframes slide {
+        from {
+          opacity: 0;
+          transform: scale(0) translate(-100%, 0);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1) translate(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="container col-8">
+          <div
+            class="col-12 bg-info d-flex justify-content-around align-items-center"
+          >
+            <h1>Space360°</h1>
+          </div>
+          <div class="col-12 d-flex container flex-wrap h-100">
+            <div
+              class="col-3 m-2 bg-primary d-flex justify-content-center align-items-center"
+              style="cursor: pointer; height: 300px"
+            >
+              <h1 class="text-center text-white" style="font-size: 3em">+</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="module">
+      async function getEvents() {
+        const e = await fetch("/api/events").then((j) => j.json());
+        if (e.events.lenght === 0) return;
+        e.events.forEach((event) => {
+          console.log(event);
+        });
+      }
+    </script>
+  </body>
+</html>

@@ -12,7 +12,10 @@ setup(
         'python-dotenv',
         'Flask_SQLAlchemy',
         'pymysql',
-        'alembic'
+        'alembic',
+        'Pillow',
+        'mysql-connector-python',
+        'cryptography'    
     ],
     entry_points={
         'console_scripts': [

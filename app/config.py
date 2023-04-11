@@ -6,4 +6,3 @@ load_dotenv() # Carregando o .env
 URL = getenv("DB_URL") # Pegando a URL da database do .env
 engine = create_engine(url=URL,echo=True) # Criando conexão
 Session = sessionmaker(bind=engine) # Criando engine
-conn = Session() # Criando sessão
